@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
+import { NextUIProvider } from '@nextui-org/react';
 
 type Props = {
   children?: ReactNode
@@ -8,7 +9,7 @@ type Props = {
 }
 
 const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
+  <NextUIProvider> 
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -27,7 +28,16 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
         <Link href="/users">
           <a>Users List</a>
         </Link>{' '}
-        | <a href="/api/users">Users API</a>
+        |{' '}
+        <Link href="/users">
+          <a href="/api/users">Users API</a>
+        </Link>{' '}
+        |{' '}
+        <Link href="/event/125_DH_29_5_22">
+          <a>Evento</a>
+        </Link>{' '}
+        |{' '}
+        <a>Users API</a>
       </nav>
     </header>
     {children}
@@ -35,7 +45,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <hr />
       <span>I'm here to stay (Footer)</span>
     </footer>
-  </div>
+  </NextUIProvider>
 )
 
 export default Layout
