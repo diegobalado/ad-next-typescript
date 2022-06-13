@@ -10,3 +10,19 @@ export type User = {
 }
 
 export * from "./event";
+type Ad = {
+  name: string;
+  href: string;
+}
+
+export type Event = {
+  created_at: string;	
+  date: string;	
+  name: string;	
+  id: string;	
+  ads: Ad[];	
+  search: boolean;	
+  price: number;
+  promo: number;
+  pictures: string[];
+}

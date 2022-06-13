@@ -1,18 +1,26 @@
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
+import Link from 'next/link';
 
-import { User } from '../interfaces'
+import { Event, User } from '../interfaces';
 
 type Props = {
-  data: User
+  data: Event
 }
 
-const ListItem = ({ data }: Props) => (
-  <Link href="/users/[id]" as={`/users/${data.id}`}>
-    <a>
-      {data.id}: {data.name}
-    </a>
-  </Link>
-)
+const ListItem = ({ data }: Props) => {
+  console.log({ data });
+  return (
+    <Link href="/users/[id]" as={`/users/${data.id}`}>
+      <a>
+        {data.id}: {data.name}, {data.price}
+        {data?.pictures?.map((picture) => (
+          <p>
+            {picture}
+          </p>
+        ))}
+      </a>
+    </Link>
+  );
+};
 
-export default ListItem
+export default ListItem;
